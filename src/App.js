@@ -9,10 +9,15 @@ function App() {
     const [formData, setFormData] = useState({ applicantName: '', applicantEmail: '' });
     const [appliedOpportunities, setAppliedOpportunities] = useState([]);
 
-  useEffect(() => {
-    fetchOpportunities();
-    loadAppliedOpportunities();
-  }, []);
+    useEffect(() => {
+      fetch('https://volunteering-app.onrender.com/api/opportunities')
+        .then(response => response.json())
+        .then(data => {
+          console.log(data); // 👈 Add this to check what comes back!
+          setOpportunities(data); // 👈 Might need to adjust to data.opportunities
+        })
+        .catch(error => console.error('Error fetching opportunities:', error));
+    }, []);
 
   const fetchOpportunities = async () => {
     const res = await axios.get('https://volunteering-app.onrender.com');
