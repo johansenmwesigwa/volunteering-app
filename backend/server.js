@@ -9,7 +9,7 @@ app.use(cors());
 app.use(express.json());
 
 // MongoDB connection
-mongoose.connect('mongodb://localhost:27017/volunteerApp', {
+mongoose.connect('mongodb+srv://johansenmwesigwa:k6WbSGk9DXLsWVr0@volapp.wp6bw3i.mongodb.net/?retryWrites=true&w=majority&appName=VolApp', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });

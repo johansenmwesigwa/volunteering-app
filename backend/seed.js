@@ -16,19 +16,19 @@ async function seed() {
       title: 'Community Garden Helper',
       description: 'Assist with planting and maintaining a community vegetable garden.',
       duration: '3 months',
-      location: 'Springfield, IL',
+      location: 'Majengo, Moshi',
     },
     {
       title: 'Literacy Program Volunteer',
       description: 'Help children improve their reading and writing skills after school.',
       duration: '6 months',
-      location: 'Austin, TX',
+      location: 'TRA, Moshi',
     },
     {
       title: 'Senior Care Companion',
       description: 'Spend time with seniors in a care facility, playing games and chatting.',
       duration: 'Ongoing',
-      location: 'Seattle, WA',
+      location: 'Njoro, Moshi',
     },
   ];
 

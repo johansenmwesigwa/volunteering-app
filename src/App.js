@@ -15,7 +15,7 @@ function App() {
   }, []);
 
   const fetchOpportunities = async () => {
-    const res = await axios.get('http://localhost:5000/opportunities');
+    const res = await axios.get('https://volunteering-app.onrender.com');
     setOpportunities(res.data);
   };
 
