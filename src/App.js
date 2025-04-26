@@ -20,8 +20,18 @@ function App() {
     }, []);
 
     const fetchOpportunities = async () => {
-      const res = await axios.get('https://volunteering-app.onrender.com/api/opportunities');
-      setOpportunities(res.data);
+      try {
+        console.log('Fetching opportunities...');
+        console.log('Backend URL:', 'https://volunteering-app.onrender.com/api/opportunities');
+    
+        const res = await axios.get('https://volunteering-app.onrender.com/api/opportunities');
+        console.log('Fetched data:', res.data);
+    
+        setOpportunities(res.data);
+      } catch (error) {
+        console.error('Error fetching opportunities:', error.message);
+        alert('Failed to load opportunities. Please try again later.');
+      }
     };
 
   const loadAppliedOpportunities = () => {
