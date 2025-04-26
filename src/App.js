@@ -19,10 +19,10 @@ function App() {
         .catch(error => console.error('Error fetching opportunities:', error));
     }, []);
 
-  const fetchOpportunities = async () => {
-    const res = await axios.get('https://volunteering-app.onrender.com');
-    setOpportunities(res.data);
-  };
+    const fetchOpportunities = async () => {
+      const res = await axios.get('https://volunteering-app.onrender.com/api/opportunities');
+      setOpportunities(res.data);
+    };
 
   const loadAppliedOpportunities = () => {
     const applied = JSON.parse(localStorage.getItem('appliedOpportunities')) || [];
