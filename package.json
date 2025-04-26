@@ -1,5 +1,5 @@
 {
-  "name": "webapp",
+  "name": "volunteering-app",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
@@ -8,6 +8,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
+  
   "repository": {
     "type": "git",
     "url": "git+https://github.com/johansenmwesigwa/volunteering-app.git"
@@ -18,7 +19,7 @@
   "bugs": {
     "url": "https://github.com/johansenmwesigwa/volunteering-app/issues"
   },
-  "homepage": "https://github.com/johansenmwesigwa/volunteering-app#readme",
+  "homepage": ".",
   "description": "",
   "dependencies": {
     "react-dom": "^19.1.0",
