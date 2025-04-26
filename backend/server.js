@@ -9,43 +9,34 @@ app.use(cors());
 app.use(express.json());
 
 // MongoDB connection
-mongoose.connect('mongodb+srv://johansenmwesigwa:k6WbSGk9DXLsWVr0@volapp.wp6bw3i.mongodb.net/?retryWrites=true&w=majority&appName=VolApp', {
+mongoose.connect(process.env.MONGO_URI || 'mongodb+srv://johansenmwesigwa:k6WbSGk9DXLsWVr0@volapp.wp6bw3i.mongodb.net/?retryWrites=true&w=majority&appName=VolApp', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
-});
+})
+.then(() => console.log('MongoDB connected'))
+.catch(err => console.log(err));
 
-// Routes
-
-// Create a new opportunity
-app.post('/opportunities', async (req, res) => {
-  const { title, description, duration, location } = req.body;
-
-  const opportunity = new Opportunity({
-    title,
-    description,
-    duration,
-    location,
-  });
-
-  await opportunity.save();
-  res.status(201).json(opportunity);
+// DEFAULT HOME
+app.get('/', (req, res) => {
+  res.send('API is running...');
 });
 
 // Get all opportunities
-app.get('/opportunities', async (req, res) => {
+app.get('/api/opportunities', async (req, res) => {
   const opportunities = await Opportunity.find();
   res.json(opportunities);
 });
 
-// Post a new opportunity
-app.post('/opportunities', async (req, res) => {
-  const opportunity = new Opportunity(req.body);
+// Create a new opportunity
+app.post('/api/opportunities', async (req, res) => {
+  const { title, description, duration, location } = req.body;
+  const opportunity = new Opportunity({ title, description, duration, location });
   await opportunity.save();
   res.status(201).json(opportunity);
 });
 
 // Apply for an opportunity
-app.post('/apply', async (req, res) => {
+app.post('/api/apply', async (req, res) => {
   const { applicantEmail, opportunityId } = req.body;
 
   // Check if user already applied
