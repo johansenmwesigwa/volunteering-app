@@ -5,7 +5,15 @@ const Opportunity = require('./models/Opportunity');
 const Application = require('./models/Application');
 
 const app = express();
-app.use(cors());
+
+const corsOptions = {
+  origin: '*', // allow ALL origins (frontend included)
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+};
+
+app.use(cors(corsOptions));
+
 app.use(express.json());
 
 // MongoDB connection
