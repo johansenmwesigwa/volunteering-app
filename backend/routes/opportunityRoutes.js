@@ -4,13 +4,14 @@ const Opportunity = require('../models/Opportunity');
 
 // Get all opportunities
 router.get('/', async (req, res) => {
-  try {
-    const opportunities = await Opportunity.find();
-    res.json(opportunities);
-  } catch (error) {
-    res.status(500).json({ message: error.message });
-  }
-});
+    try {
+      const opportunities = await Opportunity.find();
+      console.log('Fetched opportunities:', opportunities);
+      res.json(opportunities);
+    } catch (error) {
+      res.status(500).json({ message: error.message });
+    }
+  });
 
 // Create a new opportunity
 router.post('/', async (req, res) => {

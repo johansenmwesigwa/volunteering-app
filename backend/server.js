@@ -26,6 +26,7 @@ mongoose.connect(process.env.MONGO_URI || 'mongodb+srv://johansenmwesigwa:k6WbSG
 
 // DEFAULT HOME
 app.get('/', (req, res) => {
+  console.log('GET / called');
   res.send('API is running...');
 });
 
@@ -51,5 +52,5 @@ app.post('/api/apply', async (req, res) => {
 });
 
 // Start server
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 4000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

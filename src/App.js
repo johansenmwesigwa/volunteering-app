@@ -10,11 +10,11 @@ function App() {
     const [appliedOpportunities, setAppliedOpportunities] = useState([]);
 
     useEffect(() => {
-      fetch('https://volunteering-app.onrender.com/api/opportunities')
+      fetch('/api/opportunities')
         .then(response => response.json())
         .then(data => {
-          console.log(data); // 👈 Add this to check what comes back!
-          setOpportunities(data); // 👈 Might need to adjust to data.opportunities
+          console.log(data); // 👈 Check what comes back
+          setOpportunities(data);
         })
         .catch(error => console.error('Error fetching opportunities:', error));
     }, []);
@@ -22,9 +22,9 @@ function App() {
     const fetchOpportunities = async () => {
       try {
         console.log('Fetching opportunities...');
-        console.log('Backend URL:', 'https://volunteering-app.onrender.com/api/opportunities');
+        console.log('Backend URL:', 'http://localhost:4000/api/opportunities');
     
-        const res = await axios.get('https://volunteering-app.onrender.com/api/opportunities');
+        const res = await axios.get('http://localhost:4000/api/opportunities');
         console.log('Fetched data:', res.data);
     
         setOpportunities(res.data);
@@ -42,7 +42,7 @@ function App() {
   const handleApply = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('http://localhost:5000/apply', {
+      await axios.post('http://localhost:4000/apply', {
         ...formData,
         opportunityId: selectedOpportunity._id,
       });
