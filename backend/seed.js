@@ -4,7 +4,7 @@ const Opportunity = require('./models/Opportunity');
 async function seed() {
   try {
     // 1. Connect to MongoDB
-    await mongoose.connect('mongodb+srv://johansenmwesigwa:k6WbSGk9DXLsWVr0@volapp.wp6bw3i.mongodb.net/?retryWrites=true&w=majority&appName=VolApp');
+    await mongoose.connect('mongodb+srv://johansenmwesigwa:k6WbSGk9DXLsWVr0@volapp.wp6bw3i.mongodb.net/');
 
     console.log('MongoDB connected');
 
