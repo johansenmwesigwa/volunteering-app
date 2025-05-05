@@ -34,6 +34,7 @@ app.get('/', (req, res) => {
 app.use('/api/opportunities', opportunityRoutes);
 
 // Apply for an opportunity (still inside server.js for now)
+console.log('Setting up POST /api/apply route');
 app.post('/api/apply', async (req, res) => {
   try {
     const { applicantEmail, opportunityId } = req.body;
