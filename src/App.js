@@ -14,13 +14,7 @@ function App() {
     const [showSuccess, setShowSuccess] = useState(false);
 
     useEffect(() => {
-      fetch('/api/opportunities')
-        .then(response => response.json())
-        .then(data => {
-          console.log(data); // 👈 Check what comes back
-          setOpportunities(data);
-        })
-        .catch(error => console.error('Error fetching opportunities:', error));
+      fetchOpportunities();
     }, []);
 
     const fetchOpportunities = async () => {
@@ -84,20 +78,24 @@ function App() {
         <Route path="/login" element={<AdminLogin />} />
         <Route path="/" element={
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.4 }}>
-            <div className="min-h-screen bg-gray-100">
+            <div className="min-h-screen bg-gray-1000">
               <div className="max-w-3xl mx-auto p-6">
-              <h1 className="text-3xl font-bold text-blue-600 mb-4">Volunteering Opportunities</h1>
-              <div className="flex gap-4 mb-6">
-                <Link to="/login"
-                  className="bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded">
-                  🛠 Go to Admin Panel
-                </Link>
-                <button
-                  onClick={fetchOpportunities}
-                  className="bg-yellow-500 hover:bg-yellow-600 text-white px-4 py-2 rounded"
-                >
-                  🔄 Refresh Opportunities
-                </button>
+              <div className="flex justify-between items-center mb-6">
+                <div className="flex-1 text-center">
+                  <h1 className="text-3xl font-bold text-blue-600">Volunteering Opportunities</h1>
+                </div>
+                <div className="flex gap-4">
+                  <Link to="/login"
+                    className="bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded">
+                    🛠 Go to Admin Panel
+                  </Link>
+                  <button
+                    onClick={fetchOpportunities}
+                    className="bg-yellow-600 hover:bg-yellow-500 text-white px-4 py-2 rounded"
+                  >
+                    🔄 Refresh Opportunities
+                  </button>
+                </div>
               </div>
 
               <ul className="space-y-6">
@@ -106,7 +104,7 @@ function App() {
                     <h2 className="text-xl font-semibold text-gray-800">{opp.title}</h2>
                     <p className="text-gray-700">{opp.description}</p>
                     <p className="text-sm text-gray-600"><strong>Duration:</strong> {opp.duration}</p>
-                    <p className="text-sm text-gray-600"><strong>Location:</strong> {opp.location}</p>
+                    <p className="text-sm text-gray-600"><strong>Place:</strong> {opp.location}</p>
 
                     {hasApplied(opp._id) ? (
                       <button
@@ -204,6 +202,34 @@ function App() {
                   🎉 Application submitted successfully!
                 </motion.div>
               )}
+              {/* Footer */}
+              <footer className="mt-12 border-t pt-6 text-center text-sm text-gray-600">
+                <p>© {new Date().getFullYear()} Volunteering Opportunities</p>
+                <p>
+                  📞 <a href="tel:+255744123181" className="text-blue-600 hover:underline">+255 744 123 181</a> | 
+                  📤 <a href="mailto:contact@volunteer.org" className="text-blue-600 hover:underline">contact@volunteer.org</a>
+                </p>
+                <div className="flex justify-center gap-4 mt-2">
+                  <a
+                    href="https://instagram.com" // Instagram
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-pink-500 hover:underline"
+                  >
+                    {/* If FontAwesome is not loaded, fallback to emoji */}
+                    <span role="img" aria-label="Instagram">📸</span> Instagram
+                  </a>
+                  <a
+                    href="https://x.com" // X (formerly Twitter)
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-blue-500 hover:underline"
+                  >
+                    {/* If FontAwesome is not loaded, fallback to emoji */}
+                    <span role="img" aria-label="X">🐦</span> X
+                  </a>
+                </div>
+              </footer>
               </div>
             </div>
           </motion.div>
