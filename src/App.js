@@ -203,30 +203,42 @@ function App() {
                 </motion.div>
               )}
               {/* Footer */}
-              <footer className="mt-12 border-t pt-6 text-center text-sm text-gray-600">
+              <footer className="mt-12 bg-gray-200 text-blue-800 text-center text-sm py-6">
                 <p>© {new Date().getFullYear()} Volunteering Opportunities</p>
                 <p>
                   📞 <a href="tel:+255744123181" className="text-blue-600 hover:underline">+255 744 123 181</a> | 
                   📤 <a href="mailto:contact@volunteer.org" className="text-blue-600 hover:underline">contact@volunteer.org</a>
                 </p>
                 <div className="flex justify-center gap-4 mt-2">
-                  <a
-                    href="https://instagram.com" // Instagram
+                <a
+                    href="https://instagram.com"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-pink-500 hover:underline"
+                    className="hover:opacity-80"
                   >
-                    {/* If FontAwesome is not loaded, fallback to emoji */}
-                    <span role="img" aria-label="Instagram">📸</span> Instagram
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="currentColor"
+                      viewBox="0 0 24 24"
+                      className="w-6 h-6 text-pink-600"
+                    >
+                      <path d="M7.75 2C5.678 2 4 3.678 4 5.75v12.5C4 20.322 5.678 22 7.75 22h8.5C18.322 22 20 20.322 20 18.25V5.75C20 3.678 18.322 2 16.25 2h-8.5zM6 5.75A1.75 1.75 0 0 1 7.75 4h8.5A1.75 1.75 0 0 1 18 5.75v12.5A1.75 1.75 0 0 1 16.25 20h-8.5A1.75 1.75 0 0 1 6 18.25V5.75zM12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8zm0 1.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zm4.25-3.25a.75.75 0 1 0 0 1.5.75.75 0 0 0 0-1.5z" />
+                    </svg>
                   </a>
                   <a
-                    href="https://x.com" // X (formerly Twitter)
+                    href="https://x.com"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-blue-500 hover:underline"
+                    className="hover:opacity-80"
                   >
-                    {/* If FontAwesome is not loaded, fallback to emoji */}
-                    <span role="img" aria-label="X">🐦</span> X
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="currentColor"
+                      viewBox="0 0 24 24"
+                      className="w-6 h-6 text-black"
+                    >
+                      <path d="M20.267 3H17.43l-3.264 4.93L10.22 3H3l7.003 10.276L3.5 21h2.837l3.424-5.174L13.782 21h7.218l-7.442-10.9L20.267 3zm-5.024 14.895-4.242-6.223.918-1.338 4.351 6.55-1.027.01z" />
+                      </svg>
                   </a>
                 </div>
               </footer>
