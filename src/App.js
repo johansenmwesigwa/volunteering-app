@@ -11,7 +11,7 @@ function App() {
     const [selectedOpportunity, setSelectedOpportunity] = useState(null);
     const [formData, setFormData] = useState({ applicantName: '', applicantEmail: '' });
     const [appliedOpportunities, setAppliedOpportunities] = useState([]);
-    const [showSuccess, setShowSuccess] = useState(false);
+    const [successOpportunityId, setSuccessOpportunityId] = useState(null);
 
     useEffect(() => {
       fetchOpportunities();
@@ -56,9 +56,8 @@ function App() {
       setAppliedOpportunities(updatedApplied);
       localStorage.setItem('appliedOpportunities', JSON.stringify(updatedApplied));
 
-      setShowSuccess(false);
-      setShowSuccess(true);
-      setTimeout(() => setShowSuccess(false), 3000);
+      setSuccessOpportunityId(selectedOpportunity._id);
+      setTimeout(() => setSuccessOpportunityId(null), 3000);
     } catch (error) {
       if (error.response && error.response.status === 400) {
         alert(error.response.data.message);
@@ -78,15 +77,15 @@ function App() {
         <Route path="/login" element={<AdminLogin />} />
         <Route path="/" element={
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.4 }}>
-            <div className="min-h-screen bg-gray-1000">
+            <div className="min-h-screen bg-gray-600">
               <div className="max-w-3xl mx-auto p-6">
               <div className="flex justify-between items-center mb-6">
                 <div className="flex-1 text-center">
-                  <h1 className="text-3xl font-bold text-blue-600">Volunteering Opportunities</h1>
+                  <h1 className="text-3xl font-bold text-green-100">Volunteering Opportunities</h1>
                 </div>
                 <div className="flex gap-4">
                   <Link to="/login"
-                    className="bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded">
+                    className="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded">
                     🛠 Go to Admin Panel
                   </Link>
                   <button
@@ -113,13 +112,25 @@ function App() {
                         </button>
                     ) : (
                       <button
-                        className="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded"
+                        className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded"
                         onClick={() => setSelectedOpportunity(opp)}
                       >
                         Apply
                       </button>
                     )}
 
+                    {successOpportunityId === opp._id && (
+                      <motion.div
+                        initial={{ opacity: 0, scale: 0.5, y: -20 }}
+                        animate={{ opacity: 1, scale: 1, y: 0 }}
+                        exit={{ opacity: 0, scale: 0.5, y: -20 }}
+                        transition={{ type: 'spring', stiffness: 300, damping: 20 }}
+                        className="mt-4 p-4 bg-green-100 text-green-800 rounded shadow-md text-center"
+                      >
+                        🎉 Application submitted successfully!
+                      </motion.div>
+                    )}
+                    
                     {selectedOpportunity && selectedOpportunity._id === opp._id && (
                       <div style={{ marginTop: '30px' }}>
                         <h2 className="text-2xl font-semibold text-indigo-700 mb-4">Apply for {selectedOpportunity.title}</h2>
@@ -191,17 +202,7 @@ function App() {
                 ))}
               </ul>
 
-              {showSuccess && (
-                <motion.div
-                  initial={{ opacity: 0, scale: 0.5, y: -20 }}
-                  animate={{ opacity: 1, scale: 1, y: 0 }}
-                  exit={{ opacity: 0, scale: 0.5, y: -20 }}
-                  transition={{ type: 'spring', stiffness: 300, damping: 20 }}
-                  className="mt-4 p-4 bg-green-100 text-green-800 rounded shadow-md text-center"
-                >
-                  🎉 Application submitted successfully!
-                </motion.div>
-              )}
+            
               {/* Footer */}
               <footer className="mt-12 bg-gray-200 text-blue-800 text-center text-sm py-6">
                 <p>© {new Date().getFullYear()} Volunteering Opportunities</p>

@@ -23,12 +23,12 @@ const AdminLogin = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
+    <div className="min-h-screen flex items-center justify-center bg-gray-600">
       <div className="w-full max-w-sm">
         <div className="text-center mb-6">
           <a
             href="/"
-            className="inline-block bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded"
+            className="inline-block bg-blue-500 hover:bg-blue-700 text-white px-4 py-2 rounded"
           >
             🔙 Back to Opportunities
           </a>

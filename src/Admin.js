@@ -42,15 +42,15 @@ function Admin() {
   }, [message]);
 
   return (
-    <div className="min-h-screen bg-gray-100 flex items-center justify-center p-6">
+    <div className="min-h-screen bg-gray-600 flex items-center justify-center p-6">
       <div className="w-full max-w-xl">
         <button
           onClick={() => navigate('/')}
-          className="mb-6 inline-block bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded"
+          className="mb-6 inline-block bg-blue-500 hover:bg-blue-700 text-white px-4 py-2 rounded"
         >
           🔙 Back to Opportunities
         </button>
-        <h1 className="text-2xl font-semibold text-indigo-700 mb-6">Admin Panel - Create Opportunity</h1>
+        <h1 className="text-2xl font-semibold text-green-100 mb-6">Admin Panel - Create Opportunity</h1>
         {message.text && (
           <div
             className={`mb-4 text-center py-2 px-4 rounded transition-all duration-300 ease-in-out ${
