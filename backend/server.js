@@ -38,7 +38,7 @@ console.log('Setting up POST /api/apply route');
 app.post('/api/apply', async (req, res) => {
   try {
     const { applicantEmail, opportunityId } = req.body;
-    const existingApplication = await Application.findOne({ applicantEmail, opportunityId });
+    const existingApplication = await Application.findOne({ applicantEmail: { $eq: applicantEmail }, opportunityId: { $eq: opportunityId } });
 
     if (existingApplication) {
       return res.status(400).json({ message: 'You have already applied for this opportunity.' });
